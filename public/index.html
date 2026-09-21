@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindSignal — Mental Health Predictor</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-brand">
+      <div class="brand-icon">✦</div>
+      <span class="brand-name">MindSignal</span>
+    </div>
+    <span class="header-badge">ML Predictor · Score 3–10</span>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <main class="layout">
+
+    <!-- LEFT: FORM -->
+    <form id="predForm" class="form-card" novalidate>
+      <h1 class="form-title">Mental Wellbeing Signal</h1>
+      <p class="form-subtitle">Share your habits and we'll read your mental health signal using an ML model.</p>
+
+      <!-- Section 1: Profile -->
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="section-num">1</span>
+          <h2>Profile</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" min="10" max="100" value="22" required />
+            <span class="field-error" id="age-error">Age must be between 10 and 100</span>
+          </div>
+
+          <div class="field">
+            <label>Gender</label>
+            <div class="pill-group" id="gender-group">
+              <button type="button" class="pill active" data-value="Male">Male</button>
+              <button type="button" class="pill" data-value="Female">Female</button>
+            </div>
+            <input type="hidden" id="gender" value="Male" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="country">Country</label>
+          <div class="select-wrap">
+            <select id="country">
+              <option>India</option><option>USA</option><option>Canada</option>
+              <option>Australia</option><option>UK</option><option>Germany</option>
+              <option>Mexico</option><option>Turkey</option><option>France</option>
+              <option>Other</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Section 2: Academic & Digital -->
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="section-num">2</span>
+          <h2>Academic &amp; Digital Habits</h2>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="academic_level">Academic Level</label>
+            <div class="select-wrap">
+              <select id="academic_level">
+                <option>High School</option>
+                <option selected>Graduate</option>
+                <option>Undergraduate</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="most_used_platform">Most-Used Platform</label>
+            <div class="select-wrap">
+              <select id="most_used_platform">
+                <option>YouTube</option><option>Instagram</option><option>TikTok</option>
+                <option>Facebook</option><option>Twitter</option><option>Snapchat</option>
+                <option>LinkedIn</option><option>WhatsApp</option><option>WeChat</option>
+                <option>LINE</option><option>KakaoTalk</option><option>VKontakte</option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="purpose_of_use">Purpose of Use</label>
+          <div class="select-wrap">
+            <select id="purpose_of_use">
+              <option selected>Entertainment</option>
+              <option>Education</option><option>Networking</option><option>News</option>
+            </select>
+            <span class="select-arrow">▾</span>
+          </div>
+        </div>
+
+        <div class="slider-field">
+          <div class="slider-header">
+            <label for="avg_daily_usage_hours">Daily Screen Time</label>
+            <div class="slider-value-wrap">
+              <input type="number" id="avg_daily_usage_hours_num" class="num-input" value="2" min="0" max="16" step="0.5" />
+              <span class="unit">hrs / day</span>
+            </div>
+          </div>
+          <input type="range" id="avg_daily_usage_hours" min="0" max="16" step="0.5" value="2" />
+          <p class="slider-hint" id="screen-hint">Moderate digital usage</p>
+        </div>
+
+        <div class="slider-field">
+          <div class="slider-header">
+            <label for="daily_unlocks">Daily Phone Unlocks</label>
+            <div class="slider-value-wrap">
+              <input type="number" id="daily_unlocks_num" class="num-input" value="50" min="0" max="200" step="1" />
+              <span class="unit">unlocks</span>
+            </div>
+          </div>
+          <input type="range" id="daily_unlocks" min="0" max="200" step="1" value="50" />
+          <p class="slider-hint" id="unlocks-hint">Within typical range</p>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Section 3: Lifestyle & Stress -->
+      <section class="form-section">
+        <div class="section-heading">
+          <span class="section-num">3</span>
+          <h2>Lifestyle &amp; Stress</h2>
+        </div>
+
+        <div class="slider-field">
+          <div class="slider-header">
+            <label for="study_hours">Study Hours</label>
+            <div class="slider-value-wrap">
+              <input type="number" id="study_hours_num" class="num-input" value="2" min="0" max="12" step="0.5" />
+              <span class="unit">hrs / day</span>
+            </div>
+          </div>
+          <input type="range" id="study_hours" min="0" max="12" step="0.5" value="2" />
+          <p class="slider-hint" id="study-hint">Steady study rhythm</p>
+        </div>
+
+        <div class="slider-field">
+          <div class="slider-header">
+            <label for="physical_activity_hours">Physical Activity</label>
+            <div class="slider-value-wrap">
+              <input type="number" id="physical_activity_hours_num" class="num-input" value="1" min="0" max="8" step="0.25" />
+              <span class="unit">hrs / day</span>
+            </div>
+          </div>
+          <input type="range" id="physical_activity_hours" min="0" max="8" step="0.25" value="1" />
+          <p class="slider-hint" id="activity-hint">Good physical engagement</p>
+        </div>
+
+        <div class="slider-field">
+          <div class="slider-header">
+            <label for="sleep_hours_per_night">Sleep</label>
+            <div class="slider-value-wrap">
+              <input type="number" id="sleep_hours_per_night_num" class="num-input" value="7" min="2" max="12" step="0.5" />
+              <span class="unit">hrs / night</span>
+            </div>
+          </div>
+          <input type="range" id="sleep_hours_per_night" min="2" max="12" step="0.5" value="7" />
+          <p class="slider-hint" id="sleep-hint">Balanced sleep range</p>
+        </div>
+
+        <div class="field">
+          <label>Stress Level</label>
+          <div class="pill-group stress-group" id="stress-group">
+            <button type="button" class="pill stress-pill" data-value="Low" data-color="#22c55e">Low</button>
+            <button type="button" class="pill stress-pill active" data-value="Medium" data-color="#f59e0b">Medium</button>
+            <button type="button" class="pill stress-pill" data-value="High" data-color="#f97316">High</button>
+            <button type="button" class="pill stress-pill" data-value="Very High" data-color="#ef4444">Very High</button>
+          </div>
+          <input type="hidden" id="stress_level" value="Medium" />
+        </div>
+      </section>
+
+      <button type="submit" id="submitBtn" class="cta-btn">
+        <span id="btn-text">✦ Read my signal</span>
+        <span id="btn-spinner" class="spinner hidden"></span>
+      </button>
+
+      <div id="error-box" class="error-box hidden"></div>
+    </form>
+
+    <!-- RIGHT: PREDICTION PANEL -->
+    <aside class="result-panel">
+      <p class="panel-eyebrow">Wellbeing Signal</p>
+
+      <!-- Gauge -->
+      <div class="gauge-wrap">
+        <svg id="gauge-svg" viewBox="0 0 220 130" width="220" height="130">
+          <!-- Track arc -->
+          <path d="M 30 110 A 80 80 0 0 1 190 110"
+            fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="14" stroke-linecap="round" />
+          <!-- Fill arc -->
+          <path id="gauge-fill" d="M 30 110 A 80 80 0 0 1 190 110"
+            fill="none" stroke="#2d5a4a" stroke-width="14" stroke-linecap="round"
+            stroke-dasharray="251.2" stroke-dashoffset="251.2"
+            style="transition: stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1), stroke 0.6s ease;" />
+          <!-- Labels -->
+          <text x="22" y="128" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Nunito">3</text>
+          <text x="198" y="128" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="11" font-family="Nunito">10</text>
+          <!-- Score text -->
+          <text id="gauge-score" x="110" y="100" text-anchor="middle" fill="white"
+            font-size="36" font-weight="800" font-family="Nunito" opacity="0"></text>
+          <text id="gauge-unit" x="110" y="120" text-anchor="middle" fill="rgba(255,255,255,0.55)"
+            font-size="12" font-family="Nunito" opacity="0">out of 10</text>
+          <text id="gauge-placeholder" x="110" y="112" text-anchor="middle" fill="rgba(255,255,255,0.35)"
+            font-size="12" font-family="Nunito">Score appears here</text>
+        </svg>
+      </div>
+
+      <!-- Result content (hidden until score) -->
+      <div id="result-content" class="result-content hidden">
+        <div id="score-label" class="score-label"></div>
+        <p id="score-message" class="score-message"></p>
+
+        <!-- Bands legend -->
+        <div class="bands-grid">
+          <div class="band-tile">
+            <span class="band-dot" style="background:#f06a6a"></span>
+            <div><p class="band-range" style="color:#f06a6a">3 – 3.9</p><p class="band-name">Needs attention</p></div>
+          </div>
+          <div class="band-tile">
+            <span class="band-dot" style="background:#f5a623"></span>
+            <div><p class="band-range" style="color:#f5a623">4 – 6.4</p><p class="band-name">Mixed signal</p></div>
+          </div>
+          <div class="band-tile">
+            <span class="band-dot" style="background:#22c55e"></span>
+            <div><p class="band-range" style="color:#22c55e">6.5 – 8</p><p class="band-name">Strong signal</p></div>
+          </div>
+          <div class="band-tile">
+            <span class="band-dot" style="background:#14b8a6"></span>
+            <div><p class="band-range" style="color:#14b8a6">8.1 – 10</p><p class="band-name">Thriving</p></div>
+          </div>
+        </div>
+
+        <button type="button" id="resetBtn" class="reset-btn">Run another read</button>
+      </div>
+
+      <!-- Empty state -->
+      <div id="empty-state" class="empty-state">
+        <p>Fill in your details and hit<br /><strong>Read my signal</strong> to get your score.</p>
+        <div class="band-bar-wrap">
+          <div class="band-bar-labels"><span>3</span><span>5</span><span>7</span><span>9</span><span>10</span></div>
+          <div class="band-bar"></div>
+          <div class="band-bar-names"><span>Needs attention</span><span>Mixed</span><span>Strong</span><span>Thriving</span></div>
+        </div>
+      </div>
+
+      <!-- Loading state -->
+      <div id="loading-state" class="loading-state hidden">
+        <p class="loading-text">Consulting the model…</p>
+      </div>
+
+      <p class="disclaimer">This is an educational model output, not medical advice.</p>
+    </aside>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
