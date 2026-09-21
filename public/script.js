@@ -1,5 +1,5 @@
 /* ── Config ── */
-const API_URL = 'http://127.0.0.1:2200/predict';
+const API_URL = 'https://mansik-santulan-score-3-gqnp.onrender.com';
 
 /* ── Gauge constants ── */
 const GAUGE_CIRCUMFERENCE = 251.2; // π × 80 (radius)
