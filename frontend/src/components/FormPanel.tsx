@@ -292,6 +292,7 @@ export const FormPanel: React.FC<FormPanelProps> = ({
               value={formData.avg_daily_usage_hours}
               onChange={e => updateField('avg_daily_usage_hours', parseFloat(e.target.value))}
               className="w-full"
+              style={sliderStyle(formData.avg_daily_usage_hours, 0, 20)}
             />
             <p className="text-[11px] text-teal-700 dark:text-teal-400 font-medium">
               {getScreenTimeHelper(formData.avg_daily_usage_hours)}
