@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-light: #F4F8F5;
+    --color-forest: #0E4B3C;
+    --color-forest-dark: #072B22;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 75, 60, 0.2);
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(45, 212, 191, 0.2);
+}
+
+/* Custom Range Input Styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #E2E8F0;
+  height: 6px;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+
+.dark input[type="range"]::-webkit-slider-runnable-track {
+  background: #1E293B;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #0E4B3C;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(14, 75, 60, 0.35);
+  margin-top: -7px;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.dark input[type="range"]::-webkit-slider-thumb {
+  background: #2DD4BF;
+  border-color: #0F172A;
+  box-shadow: 0 0 10px rgba(45, 212, 191, 0.4);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+input[type="range"]::-moz-range-track {
+  background: #E2E8F0;
+  height: 6px;
+  border-radius: 9999px;
+}
+
+.dark input[type="range"]::-moz-range-track {
+  background: #1E293B;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #0E4B3C;
+  border: 3px solid #FFFFFF;
+  box-shadow: 0 2px 6px rgba(14, 75, 60, 0.35);
+  transition: transform 0.15s ease;
+}
+
+/* Glassmorphism helpers */
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.dark .glass-panel-light {
+  background: rgba(15, 23, 42, 0.88) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.6) !important;
+}
+
+.glass-forest-card {
+  background: linear-gradient(145deg, rgba(14, 75, 60, 0.95) 0%, rgba(7, 43, 34, 0.98) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+}
+
+/* Smooth Pulse animation */
+@keyframes softPulse {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.02);
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2.5s infinite ease-in-out;
+}
