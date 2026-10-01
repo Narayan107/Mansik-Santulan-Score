@@ -4,7 +4,7 @@ import { FormPanel } from './components/FormPanel'
 import { ResultPanel } from './components/ResultPanel'
 import { StudentFormData, PanelState } from './types'
 
-const API_BASE = 'http://127.0.0.1:2200'
+const API_BASE = 'https://mansik-santulan-score-qjb7.onrender.com'
 
 const INITIAL_FORM: StudentFormData = {
   age: 22,
