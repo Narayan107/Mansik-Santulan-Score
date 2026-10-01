@@ -358,7 +358,6 @@ export const FormPanel: React.FC<FormPanelProps> = ({
                 value={formData.study_hours}
                 onChange={e => updateField('study_hours', parseFloat(e.target.value))}
                 className="w-full"
-
                 style={sliderStyle(formData.study_hours, 0, 20)}
               />
               <span className="text-[10px] text-slate-500 block text-right">0–14 hrs/day</span>
