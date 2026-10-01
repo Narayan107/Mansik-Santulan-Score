@@ -77,6 +77,13 @@ export const FormPanel: React.FC<FormPanelProps> = ({
   const updateField = <K extends keyof StudentFormData>(key: K, value: StudentFormData[K]) => {
     setFormData(prev => ({ ...prev, [key]: value }))
   }
+  const sliderStyle = (value: number, min: number, max: number) => {
+  const percentage = ((value - min) / (max - min)) * 100
+
+  return {
+    background: `linear-gradient(to right, #0E4B3C ${percentage}%, #c8e6dc ${percentage}%)`
+  }
+}
 
   // Dynamic helper tips
   const getScreenTimeHelper = (hrs: number) => {
@@ -318,6 +325,7 @@ export const FormPanel: React.FC<FormPanelProps> = ({
               value={formData.daily_unlocks}
               onChange={e => updateField('daily_unlocks', parseInt(e.target.value))}
               className="w-full"
+              style={sliderStyle(formData.daily_unlocks, 0, 180)}
             />
             <p className="text-[11px] text-teal-700 dark:text-teal-400 font-medium">
               {getUnlocksHelper(formData.daily_unlocks)}
@@ -349,6 +357,8 @@ export const FormPanel: React.FC<FormPanelProps> = ({
                 value={formData.study_hours}
                 onChange={e => updateField('study_hours', parseFloat(e.target.value))}
                 className="w-full"
+
+                style={sliderStyle(formData.study_hours, 0, 20)}
               />
               <span className="text-[10px] text-slate-500 block text-right">0–14 hrs/day</span>
             </div>
@@ -369,6 +379,7 @@ export const FormPanel: React.FC<FormPanelProps> = ({
                 value={formData.physical_activity_hours}
                 onChange={e => updateField('physical_activity_hours', parseFloat(e.target.value))}
                 className="w-full"
+                style={sliderStyle(formData.physical_activity_hours, 0, 6)}
               />
               <span className="text-[10px] text-slate-500 block text-right">0–6 hrs/day</span>
             </div>
@@ -389,6 +400,7 @@ export const FormPanel: React.FC<FormPanelProps> = ({
                 value={formData.sleep_hours_per_night}
                 onChange={e => updateField('sleep_hours_per_night', parseFloat(e.target.value))}
                 className="w-full"
+                style={sliderStyle(formData.sleep_hours_per_night, 2, 14)}
               />
               <span className="text-[10px] text-teal-600 dark:text-teal-400 block text-right">
                 {getSleepHelper(formData.sleep_hours_per_night)}
