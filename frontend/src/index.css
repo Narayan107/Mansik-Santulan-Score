@@ -32,7 +32,6 @@ input[type="range"] {
   appearance: none;
   background: transparent;
   cursor: pointer;
-  height:20px;
 }
 
 input[type="range"]:focus {
